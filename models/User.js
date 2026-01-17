@@ -7,6 +7,8 @@ const userSchema = new mongoose.Schema({
   password: String,
   role: { type: String, default: "user" },
   isPaid: { type: Boolean, default: false },
+  /* 🔥 NEW */
+  isActive: { type: Boolean, default: true },
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);

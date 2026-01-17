@@ -26,17 +26,17 @@ app.use("/api/payment", require("./routes/paymentRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
 
-app.get("/test-email", async (req, res) => {
-  const sendEmail = require("./utils/sendEmail");
+// app.get("/test-email", async (req, res) => {
+//   const sendEmail = require("./utils/sendEmail");
 
-  await sendEmail(
-    "kaleamolika28@gmail.com",
-    "Brevo API Works 🎉",
-    "If you got this email, Brevo API is working perfectly."
-  );
+//   await sendEmail(
+//     "kaleamolika28@gmail.com",
+//     "Brevo API Works 🎉",
+//     "If you got this email, Brevo API is working perfectly."
+//   );
 
-  res.send("Email sent");
-});
+//   res.send("Email sent");
+// });
 
 
 app.listen(process.env.PORT, () =>

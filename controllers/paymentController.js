@@ -1,3 +1,4 @@
+//paymentController.js
 const stripe = require("../config/stripe");
 const User = require("../models/User");
 const Payment = require("../models/Payment");

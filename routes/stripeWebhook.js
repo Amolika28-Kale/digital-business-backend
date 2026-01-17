@@ -1,3 +1,4 @@
+//stripeWebhook.js
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const PendingUser = require("../models/PendingUser");
 const User = require("../models/User");

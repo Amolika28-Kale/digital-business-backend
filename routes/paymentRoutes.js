@@ -1,3 +1,4 @@
+//paymentRoutes.js
 const express = require("express");
 const stripe = require("../config/stripe");
 const PendingUser = require("../models/PendingUser");

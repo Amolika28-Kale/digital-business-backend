@@ -1,3 +1,4 @@
+//authController.js
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -17,6 +18,11 @@ exports.login = async (req, res) => {
     // 🔥 IMPORTANT LOGIC
     if (user.role !== "admin" && !user.isPaid)
       return res.status(403).json({ msg: "Payment not completed" });
+
+    // 🚫 BLOCK DISABLED USERS
+if (!user.isActive)
+  return res.status(403).json({ msg: "Account disabled by admin" });
+
 
     const token = jwt.sign(
       { id: user._id, role: user.role },
