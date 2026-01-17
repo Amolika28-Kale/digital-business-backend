@@ -25,6 +25,7 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/payment", require("./routes/paymentRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
 app.use("/api/user", require("./routes/userRoutes"));
+app.use("/api/admin/websites", require("./routes/adminWebsiteRoutes"));
 
 // app.get("/test-email", async (req, res) => {
 //   const sendEmail = require("./utils/sendEmail");
