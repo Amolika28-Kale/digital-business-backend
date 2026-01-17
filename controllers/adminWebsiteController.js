@@ -8,18 +8,26 @@ exports.generateWebsite = async (req, res) => {
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: "User not found" });
 
-    const existing = await Website.findOne({ userId });
-    if (existing) {
+    if (!user.isPaid) {
+      return res.status(400).json({ message: "User has not completed payment" });
+    }
+
+    if (user.websiteGenerated) {
       return res.status(400).json({ message: "Website already generated" });
     }
 
-    const subdomain = `${user.name.toLowerCase().replace(/\s+/g, "")}`;
+    const subdomain = user.name.toLowerCase().replace(/\s+/g, "");
 
     const website = await Website.create({
       userId,
       subdomain,
+      status: "pending",
       generatedAt: new Date(),
     });
+
+    // 🔥 IMPORTANT
+    user.websiteGenerated = true;
+    await user.save();
 
     res.json({ message: "Website generated", website });
   } catch (err) {

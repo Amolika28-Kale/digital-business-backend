@@ -6,9 +6,10 @@ const userSchema = new mongoose.Schema({
   mobile: String,
   password: String,
   role: { type: String, default: "user" },
-  isPaid: { type: Boolean, default: false },
-  /* 🔥 NEW */
-  isActive: { type: Boolean, default: true },
+isPaid: { type: Boolean, default: false },
+isActive: { type: Boolean, default: true },
+websiteGenerated: { type: Boolean, default: false },
+
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);
